@@ -1,8 +1,10 @@
-import { configureStore } from '@reduxjs/toolkit';
-import counterReducer from '../features/counter/counterSlice';
+import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
+
+import teachersReducer from "../features/teachers/teacherSlice";
 
 export const store = configureStore({
   reducer: {
-    counter: counterReducer,
+    teachers: teachersReducer,
   },
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(),
 });
