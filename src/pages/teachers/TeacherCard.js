@@ -1,6 +1,5 @@
 import React from "react";
-import { AiFillStar, AiOutlineStar } from "react-icons/ai";
-import { BsStarHalf } from "react-icons/bs";
+import { BsStarHalf, BsStarFill, BsStar } from "react-icons/bs";
 const TeacherCard = ({ teacher }) => {
   const {
     name,
@@ -25,17 +24,18 @@ const TeacherCard = ({ teacher }) => {
     const emptyStars = 5 - Math.ceil(ratings);
 
     const fullStarIcons = Array.from({ length: fullStars }, (_, index) => (
-      <AiFillStar key={`full-${index}`} />
+      <BsStarFill key={`full-${index}`} />
     ));
     const halfStarIcon = hasHalfStar ? <BsStarHalf key="half" /> : null;
     const emptyStarIcons = Array.from({ length: emptyStars }, (_, index) => (
-      <AiOutlineStar key={`empty-${index}`} />
+      <BsStar key={`empty-${index}`} />
     ));
 
     const stars = [...fullStarIcons, halfStarIcon, ...emptyStarIcons];
 
-    return <div>{stars}</div>;
+    return <div className="flex text-xl">{stars}</div>;
   };
+
   return (
     <div class="w-full max-w-sm overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800">
       <img
@@ -63,9 +63,12 @@ const TeacherCard = ({ teacher }) => {
       </div>
 
       <div class="px-6 py-4">
-        <h1 class="text-xl font-semibold text-gray-800 dark:text-white">
-          {name}
-        </h1>
+        <div class="text-xl font-semibold text-gray-800 dark:text-white flex justify-between">
+          <h1>{name}</h1>{" "}
+          <span className="text-red-600 ">
+            <StarRatings />
+          </span>
+        </div>
 
         <p class="py-2 text-gray-700 dark:text-gray-400 text-sm">
           {position} in {institute}
