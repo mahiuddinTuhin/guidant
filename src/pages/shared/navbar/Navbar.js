@@ -40,7 +40,7 @@ const Navbar = () => {
                           class="relative text-cyan-800 dark:text-white
                                                     before:absolute before:-bottom-2 md:before:-bottom-7 before:w-full before:h-0.5 before:mx-auto before:mt-auto before:rounded-full before:bg-cyan-800 dark:before:bg-cyan-400"
                         >
-                          <span>Nike</span>
+                          <span>Home</span>
                         </div>
                       </a>
                     </li>
@@ -51,7 +51,7 @@ const Navbar = () => {
                                                     before:absolute before:-bottom-2 md:before:-bottom-7 before:origin-left before:w-full before:h-0.5 before:mx-auto before:mt-auto before:rounded-full before:bg-cyan-800 dark:before:bg-cyan-400 before:transition before:scale-x-0 group-hover:before:scale-x-100"
                         >
                           <span class="transition group-hover:text-cyan-700 dark:group-hover:text-cyan-400">
-                            Adiddas
+                            Teachers
                           </span>
                         </div>
                       </a>
@@ -63,7 +63,7 @@ const Navbar = () => {
                                                     before:absolute before:-bottom-2 md:before:-bottom-7 before:origin-left before:w-full before:h-0.5 before:mx-auto before:mt-auto before:rounded-full before:bg-cyan-800 dark:before:bg-cyan-400 before:transition before:scale-x-0 group-hover:before:scale-x-100"
                         >
                           <span class="transition group-hover:text-cyan-700 dark:group-hover:text-cyan-400">
-                            Cart
+                            Event
                           </span>
                         </div>
                       </a>
