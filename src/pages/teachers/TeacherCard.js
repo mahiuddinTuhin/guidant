@@ -37,17 +37,17 @@ const TeacherCard = ({ teacher }) => {
   };
 
   return (
-    <div class="w-full max-w-sm overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800">
+    <div className="w-full max-w-sm overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800">
       <img
-        class="object-cover object-center w-full h-56"
+        className="object-cover object-center w-full h-56"
         src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80"
         alt="avatar"
       />
 
-      <div class="flex items-center px-6 py-3 bg-gray-900">
+      <div className="flex items-center px-6 py-3 bg-gray-900">
         <svg
           aria-label="headphones icon"
-          class="w-6 h-6 text-white fill-current"
+          className="w-6 h-6 text-white fill-current"
           viewBox="0 0 24 24"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -59,25 +59,25 @@ const TeacherCard = ({ teacher }) => {
           />
         </svg>
 
-        <h1 class="mx-3 text-lg font-semibold text-white">{department}</h1>
+        <h1 className="mx-3 text-lg font-semibold text-white">{department}</h1>
       </div>
 
-      <div class="px-6 py-4">
-        <div class="text-xl font-semibold text-gray-800 dark:text-white flex justify-between">
+      <div className="px-6 py-4">
+        <div className="text-xl font-semibold text-gray-800 dark:text-white flex justify-between">
           <h1>{name}</h1>{" "}
           <span className="text-red-600 ">
             <StarRatings />
           </span>
         </div>
 
-        <p class="py-2 text-gray-700 dark:text-gray-400 text-sm">
+        <p className="py-2 text-gray-700 dark:text-gray-400 text-sm">
           {position} in {institute}
         </p>
 
-        <div class="flex items-center mt-4 text-gray-700 dark:text-gray-200">
+        <div className="flex items-center mt-4 text-gray-700 dark:text-gray-200">
           <svg
             aria-label="suitcase icon"
-            class="w-6 h-6 fill-current"
+            className="w-6 h-6 fill-current"
             viewBox="0 0 24 24"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -90,15 +90,15 @@ const TeacherCard = ({ teacher }) => {
             />
           </svg>
 
-          <h1 class="px-2 text-sm">
+          <h1 className="px-2 text-sm">
             {position} in {institute}
           </h1>
         </div>
 
-        <div class="flex items-center mt-4 text-gray-700 dark:text-gray-200">
+        <div className="flex items-center mt-4 text-gray-700 dark:text-gray-200">
           <svg
             aria-label="location pin icon"
-            class="w-6 h-6 fill-current"
+            className="w-6 h-6 fill-current"
             viewBox="0 0 24 24"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -115,13 +115,13 @@ const TeacherCard = ({ teacher }) => {
             />
           </svg>
 
-          <h1 class="px-2 text-sm">{address}</h1>
+          <h1 className="px-2 text-sm">{address}</h1>
         </div>
 
-        <div class="flex items-center mt-4 text-gray-700 dark:text-gray-200">
+        <div className="flex items-center mt-4 text-gray-700 dark:text-gray-200">
           <svg
             aria-label="email icon"
-            class="w-6 h-6 fill-current"
+            className="w-6 h-6 fill-current"
             viewBox="0 0 24 24"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -133,7 +133,7 @@ const TeacherCard = ({ teacher }) => {
             />
           </svg>
 
-          <h1 class="px-2 text-sm">{email}</h1>
+          <h1 className="px-2 text-sm">{email}</h1>
         </div>
       </div>
     </div>

@@ -15,7 +15,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 // import styles bundle
 import "swiper/css/bundle";
-
+import "react-day-picker/dist/style.css";
 const container = document.getElementById("root");
 const root = createRoot(container);
 

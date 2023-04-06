@@ -35,12 +35,14 @@ const Navbar = () => {
                 <div className="z-20 flex gap-8 md:gap-0 flex-col md:flex-row md:items-center w-full">
                   <ul className="pt-28 lg:pt-0 gap-8 tracking-wide font-medium flex-col flex md:flex-row md:gap-0">
                     <li className="max-w-max">
-                      <Link to="/" className="block md:px-3">
+                      <Link to="/" className="block md:px-3 group">
                         <div
-                          className="relative text-cyan-800 dark:text-white
-                                                    before:absolute before:-bottom-2 md:before:-bottom-7 before:w-full before:h-0.5 before:mx-auto before:mt-auto before:rounded-full before:bg-cyan-800 dark:before:bg-cyan-400"
+                          className="relative text-gray-600 dark:text-gray-300
+                                                    before:absolute before:-bottom-2 md:before:-bottom-7 before:origin-left before:w-full before:h-0.5 before:mx-auto before:mt-auto before:rounded-full before:bg-cyan-800 dark:before:bg-cyan-400 before:transition before:scale-x-0 group-hover:before:scale-x-100"
                         >
-                          <span>Home</span>
+                          <span className="transition group-hover:text-cyan-700 dark:group-hover:text-cyan-400">
+                            Home
+                          </span>
                         </div>
                       </Link>
                     </li>
@@ -88,7 +90,7 @@ const Navbar = () => {
                   title="Start buying"
                   className="hidden sm:block w-full py-3 px-6 text-center rounded-full transition bg-gray-900 dark:bg-gray-700 hover:bg-cyan-500 active:bg-cyan-600 focus:bg-cyan-800 sm:w-max"
                 >
-                  <span className="block text-white text-sm">Shop now</span>
+                  <span className="block text-white text-sm">Login</span>
                 </Link>
 
                 <div className="flex items-center md:hidden max-h-10">

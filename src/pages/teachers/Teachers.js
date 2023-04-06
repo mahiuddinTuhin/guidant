@@ -34,12 +34,12 @@ const Teachers = () => {
   }
   if (!isLoading && !isError && teachersData.length > 0) {
     content = (
-      <div class="py-20">
-        <div class="mb-16 md:w-2/3 lg:w-1/2">
-          <h2 class="mb-4 text-2xl font-bold text-gray-800 dark:text-white md:text-4xl">
+      <div className="py-20">
+        <div className="mb-16 md:w-2/3 lg:w-1/2">
+          <h2 className="mb-4 text-2xl font-bold text-gray-800 dark:text-white md:text-4xl">
             Find your teacher
           </h2>
-          <p class="text-gray-600 dark:text-gray-300">
+          <p className="text-gray-600 dark:text-gray-300">
             Tailus prides itself not only on award-winning technology, but also
             on the talent of its people of some of the brightest minds and most
             experienced executives in business.

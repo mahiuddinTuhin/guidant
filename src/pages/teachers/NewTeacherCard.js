@@ -1,6 +1,7 @@
 import React from "react";
 import { BsStarHalf, BsStarFill, BsStar } from "react-icons/bs";
-
+import { FaMoneyCheckAlt } from "react-icons/fa";
+import { Link } from "react-router-dom";
 const NewTeacherCard = ({ teacher }) => {
   const {
     name,
@@ -17,6 +18,7 @@ const NewTeacherCard = ({ teacher }) => {
     email,
     address,
     perHourFair,
+    id,
   } = teacher;
 
   // getting stars
@@ -40,32 +42,42 @@ const NewTeacherCard = ({ teacher }) => {
   };
 
   return (
-    <div class="group relative rounded-3xl  space-y-6 overflow-hidden">
+    <Link
+      to={`/appointing/${id}`}
+      className="group relative rounded-3xl  space-y-6 overflow-hidden shadow-lg"
+    >
       <img
-        class="mx-auto h-[26rem] w-full grayscale object-cover object-top ransition duration-500 group-hover:scale-105 group-hover:grayscale-0"
+        className="mx-auto h-[26rem] w-full grayscale object-cover object-top ransition duration-500 group-hover:scale-105 group-hover:grayscale-0"
         src={image}
         alt="woman"
         loading="lazy"
         width="640"
         height="805"
       />
-      <div class="absolute bottom-0 inset-x-0 h-max mt-auto px-8 py-6 bg-gray-800 dark:bg-white translate-y-24 transition duration-300 ease-in-out group-hover:translate-y-0">
+      <div className="absolute bottom-0 inset-x-0 h-max mt-auto px-8 py-6 bg-gray-800 dark:bg-white translate-y-24 transition duration-300 ease-in-out group-hover:translate-y-0">
         <div>
-          <div class="text-xl font-semibold dark:text-gray-700 text-white flex justify-between">
+          <div className="text-xl font-semibold dark:text-gray-700 text-white flex justify-between items-center">
             <span>{name}</span>
-            <span className="text-xs text-rose-700">
+            <span className="text-xs text-yellow-500">
               <StarRatings />
             </span>
           </div>
-          <span class="block text-sm text-gray-500">
+          <span className="block text-sm text-gray-500">
             {position}- {institute}
           </span>
         </div>
-        <p class="mt-8 text-gray-300 dark:text-gray-600">
-          Quae labore quia tempora dolor impedit. Possimus, sint ducimus ipsam?
+
+        <div className="mt-1 text-gray-300 dark:text-gray-600 flex justify-between">
+          <p className="">{department}</p>
+          <p>Experience: {experience}</p>
+        </div>
+        <p className="mt-2 text-gray-300 dark:text-gray-600 text-sm italic">
+          {email}
+          <br />
+          {address}
         </p>
       </div>
-    </div>
+    </Link>
   );
 };
 
