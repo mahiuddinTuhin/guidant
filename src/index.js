@@ -9,7 +9,13 @@ import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
-
+// import Swiper and modules styles
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+// import styles bundle
+import "swiper/css/bundle";
+import "react-day-picker/dist/style.css";
 const container = document.getElementById("root");
 const root = createRoot(container);
 
