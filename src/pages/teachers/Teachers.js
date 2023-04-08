@@ -17,7 +17,7 @@ const Teachers = () => {
 
   useEffect(() => {
     dispatch(fetchingTeachers());
-  }, []);
+  }, [dispatch]);
 
   let content = null;
 

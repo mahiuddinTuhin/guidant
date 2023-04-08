@@ -1,45 +1,64 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { fetchingTeacher } from "../../features/teacher/teacherSlice";
 import AppointingCalander from "./utilities/AppointingCalander";
 import AppointingHero from "./utilities/AppointingHero";
 import AvailableSchedule from "./utilities/AvailableSchedule";
+import Courses from "./utilities/Courses";
 
 const Appointing = () => {
   const dispatch = useDispatch();
+  const [selectedDate, setSelectedDate] = useState(new Date());
   const { teacherid } = useParams();
 
   const teacher = useSelector((state) => state.teacher);
   const { isLoading, isError, error, teacher: appointingTeacher } = teacher;
-  console.log({ isLoading, isError, error, appointingTeacher });
+
   const {
-    id,
-    name,
-    institute,
-    position,
-    experience,
-    department,
+    // id,
+    // name,
+    // institute,
+    // position,
+    // experience,
+    // department,
     courses,
-    features,
-    speciality,
-    image,
-    ratings,
-    email,
-    address,
-    perHourFair,
-    student_deals,
+    // features,
+    // speciality,
+    // image,
+    // ratings,
+    // email,
+    // address,
+    // perHourFair,
+    // student_deals,
   } = appointingTeacher;
 
   useEffect(() => {
     dispatch(fetchingTeacher(teacherid));
-  }, [dispatch]);
+  }, [dispatch, teacherid]);
 
   return (
     <div>
       <AppointingHero teacher={appointingTeacher} />
-      <AppointingCalander />
-      <AvailableSchedule />
+      <div className="flex items-center justify-center my-12">
+        {courses.map((c, id) => (
+          <Courses course={c} key={c} id={id} />
+        ))}
+      </div>
+      <div className="flex items-center justify-center">
+        <div className="">
+          <AppointingCalander
+            selectedDate={selectedDate}
+            setSelectedDate={setSelectedDate}
+          />
+        </div>
+        <div className="">
+          <AvailableSchedule
+            teacher={appointingTeacher}
+            selectedDate={selectedDate}
+          />
+        </div>
+      </div>
     </div>
   );
 };

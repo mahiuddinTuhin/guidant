@@ -16,14 +16,13 @@ const Navbar = () => {
               />
               <label
                 htmlFor="toggleNav"
-                role="overlaynav"
                 className="fixed left-0 top-0 transition-all 
                     md:peer-checked:hidden md:hidden opacity-0 hidden peer-checked:z-0 
                     peer-checked:opacity-75 peer-checked:block w-full h-screen
                     bg-gray-200 bg-opacity-75 dark:bg-darker dark:opacity-80"
               ></label>
               <div className="relative z-40">
-                <Link to="#" aria-label="logo">
+                <Link to="/" aria-label="logo">
                   <FaGrav className="text-[#221E1F] text-4xl" />
                 </Link>
               </div>
@@ -59,7 +58,7 @@ const Navbar = () => {
                       </Link>
                     </li>
                     <li className="max-w-max">
-                      <Link to="#" className="block md:px-3 group">
+                      <Link to="/" className="block md:px-3 group">
                         <div
                           className="relative text-gray-600 dark:text-gray-300
                                                     before:absolute before:-bottom-2 md:before:-bottom-7 before:origin-left before:w-full before:h-0.5 before:mx-auto before:mt-auto before:rounded-full before:bg-cyan-800 dark:before:bg-cyan-400 before:transition before:scale-x-0 group-hover:before:scale-x-100"
@@ -102,12 +101,10 @@ const Navbar = () => {
                     className="relative  p-6 -mr-6"
                   >
                     <div
-                      role="hidden"
                       id="line"
                       className="m-auto h-0.5 w-6 rounded bg-sky-900 dark:bg-gray-200 transition duration-300"
                     ></div>
                     <div
-                      role="hidden"
                       id="line2"
                       className="m-auto mt-2 h-0.5 w-6 rounded bg-sky-900 dark:bg-gray-200 transition duration-300"
                     ></div>

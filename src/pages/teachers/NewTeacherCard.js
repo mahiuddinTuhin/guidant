@@ -1,6 +1,5 @@
 import React from "react";
 import { BsStarHalf, BsStarFill, BsStar } from "react-icons/bs";
-import { FaMoneyCheckAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 const NewTeacherCard = ({ teacher }) => {
   const {
@@ -9,15 +8,15 @@ const NewTeacherCard = ({ teacher }) => {
     position,
     experience,
     department,
-    courses,
-    features,
-    speciality,
+    // courses,
+    // features,
+    // speciality,
     image,
     ratings,
-    student_deals,
+    // student_deals,
     email,
     address,
-    perHourFair,
+    // perHourFair,
     id,
   } = teacher;
 

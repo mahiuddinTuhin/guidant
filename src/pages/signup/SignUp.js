@@ -83,7 +83,7 @@ const Signup = () => {
                     Login
                   </span>
                 </button>
-                <button href="#" type="reset" className="-ml-3 w-max p-3">
+                <button href="/" type="reset" className="-ml-3 w-max p-3">
                   <span className="text-sm tracking-wide text-sky-600 dark:text-sky-400">
                     Create new account
                   </span>
@@ -95,13 +95,13 @@ const Signup = () => {
             <div className="space-x-4 text-center">
               <span>&copy; Tailus</span>
               <a
-                href="#"
+                href="/"
                 className="text-sm hover:text-sky-900 dark:hover:text-gray-300"
               >
                 Contact
               </a>
               <a
-                href="#"
+                href="/"
                 className="text-sm hover:text-sky-900 dark:hover:text-gray-300"
               >
                 Privacy & Terms

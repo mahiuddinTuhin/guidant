@@ -14,7 +14,13 @@
     "email": "example@yahoo.com",
     "address": "Dhaka, Uttora 23/C",
     "perHourFair": "25",
-    "student_deals": ["Free Consultation", "Discount for Long-Term Packages"]
+    "student_deals": ["Free Consultation", "Discount for Long-Term Packages"],
+    "timeSlots": [
+      "8.00am-9.00am",
+      "10.00am-11.00am",
+      "4.00pm-5.00pm",
+      "6.00pm-7.00pm"
+    ]
   },
   {
     "id": "t00002",
@@ -35,7 +41,13 @@
     "email": "example@yahoo.com",
     "address": "Dhaka, Uttora 23/C",
     "perHourFair": "25",
-    "student_deals": ["First Session Free", "Referral Bonus"]
+    "student_deals": ["First Session Free", "Referral Bonus"],
+    "timeSlots": [
+      "8.00am-9.00am",
+      "10.00am-11.00am",
+      "4.00pm-5.00pm",
+      "6.00pm-7.00pm"
+    ]
   },
   {
     "id": "t00003",
@@ -56,7 +68,13 @@
     "email": "example@yahoo.com",
     "address": "Dhaka, Uttora 23/C",
     "perHourFair": "25",
-    "student_deals": ["Discount for Repeat Clients", "Group Discounts"]
+    "student_deals": ["Discount for Repeat Clients", "Group Discounts"],
+    "timeSlots": [
+      "8.00am-9.00am",
+      "10.00am-11.00am",
+      "4.00pm-5.00pm",
+      "6.00pm-7.00pm"
+    ]
   },
   {
     "id": "t00004",
@@ -73,7 +91,13 @@
     "email": "example@yahoo.com",
     "address": "Dhaka, Uttora 23/C",
     "perHourFair": "25",
-    "student_deals": ["Free Study Materials", "Discount for Multiple Sessions"]
+    "student_deals": ["Free Study Materials", "Discount for Multiple Sessions"],
+    "timeSlots": [
+      "8.00am-9.00am",
+      "10.00am-11.00am",
+      "4.00pm-5.00pm",
+      "6.00pm-7.00pm"
+    ]
   },
   {
     "id": "t00005",
@@ -93,6 +117,12 @@
     "student_deals": [
       "Free Revision Session",
       "Discount for Early Registration"
+    ],
+    "timeSlots": [
+      "8.00am-9.00am",
+      "10.00am-11.00am",
+      "4.00pm-5.00pm",
+      "6.00pm-7.00pm"
     ]
   },
   {
@@ -113,6 +143,12 @@
     "student_deals": [
       "Free Revision Session",
       "Discount for Early Registration"
+    ],
+    "timeSlots": [
+      "8.00am-9.00am",
+      "10.00am-11.00am",
+      "4.00pm-5.00pm",
+      "6.00pm-7.00pm"
     ]
   },
   {
@@ -130,7 +166,13 @@
     "email": "example@yahoo.com",
     "address": "Dhaka, Uttora 23/C",
     "perHourFair": "25",
-    "student_deals": ["Free Consultation", "Discount for Referrals"]
+    "student_deals": ["Free Consultation", "Discount for Referrals"],
+    "timeSlots": [
+      "8.00am-9.00am",
+      "10.00am-11.00am",
+      "4.00pm-5.00pm",
+      "6.00pm-7.00pm"
+    ]
   },
   {
     "id": "t00008",
@@ -147,7 +189,13 @@
     "email": "example@yahoo.com",
     "address": "Dhaka, Uttora 23/C",
     "perHourFair": "25",
-    "student_deals": ["Free Anatomy Textbook", "Discount for Online Sessions"]
+    "student_deals": ["Free Anatomy Textbook", "Discount for Online Sessions"],
+    "timeSlots": [
+      "8.00am-9.00am",
+      "10.00am-11.00am",
+      "4.00pm-5.00pm",
+      "6.00pm-7.00pm"
+    ]
   },
   {
     "id": "t00009",
@@ -167,6 +215,12 @@
     "student_deals": [
       "Free Case Law Database Access",
       "Discount for Bulk Sessions"
+    ],
+    "timeSlots": [
+      "8.00am-9.00am",
+      "10.00am-11.00am",
+      "4.00pm-5.00pm",
+      "6.00pm-7.00pm"
     ]
   },
   {
@@ -187,6 +241,12 @@
     "student_deals": [
       "Free Economics Textbook",
       "Discount for Full Semester Packages"
+    ],
+    "timeSlots": [
+      "8.00am-9.00am",
+      "10.00am-11.00am",
+      "4.00pm-5.00pm",
+      "6.00pm-7.00pm"
     ]
   },
   {
@@ -204,6 +264,12 @@
     "email": "example@yahoo.com",
     "address": "Dhaka, Uttora 23/C",
     "perHourFair": "25",
-    "student_deals": ["Free Writing Guide", "Discount for Multiple Sessions"]
+    "student_deals": ["Free Writing Guide", "Discount for Multiple Sessions"],
+    "timeSlots": [
+      "8.00am-9.00am",
+      "10.00am-11.00am",
+      "4.00pm-5.00pm",
+      "6.00pm-7.00pm"
+    ]
   }
 ]

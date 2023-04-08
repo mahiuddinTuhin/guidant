@@ -7,27 +7,24 @@ function Footer() {
         <div className="container m-auto space-y-6 text-gray-600 dark:text-gray-300">
           <FaGrav className="m-auto text-5xl text-[#221E1F]" />
           {/* <img src="images/logo.svg" alt="logo tailus" className="m-auto w-40" /> */}
-          <ul
-            role="list"
-            className="flex flex-col items-center justify-center gap-4 py-4 sm:flex-row sm:gap-8"
-          >
-            <li role="listitem">
-              <a href="#" className="hover:text-primary">
+          <ul className="flex flex-col items-center justify-center gap-4 py-4 sm:flex-row sm:gap-8">
+            <li>
+              <a href="/" className="hover:text-primary">
                 Home
               </a>
             </li>
-            <li role="listitem">
-              <a href="#" className="hover:text-primary">
+            <li>
+              <a href="/" className="hover:text-primary">
                 Features
               </a>
             </li>
-            <li role="listitem">
-              <a href="#" className="hover:text-primary">
+            <li>
+              <a href="/" className="hover:text-primary">
                 Get started
               </a>
             </li>
-            <li role="listitem">
-              <a href="#" className="hover:text-primary">
+            <li>
+              <a href="/" className="hover:text-primary">
                 About us
               </a>
             </li>
@@ -56,7 +53,7 @@ function Footer() {
                 <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555zM0 4.697v7.104l5.803-3.558L0 4.697zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757zm3.436-.586L16 11.801V4.697l-5.803 3.546z"></path>
               </svg>
             </a>
-            <a href="#" title="facebook" target="blank" aria-label="facebook">
+            <a href="/" title="facebook" target="blank" aria-label="facebook">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="currentColor"
@@ -66,7 +63,7 @@ function Footer() {
                 <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"></path>
               </svg>
             </a>
-            <a href="#" title="linkedin" target="blank" aria-label="linkedin">
+            <a href="/" title="linkedin" target="blank" aria-label="linkedin">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="currentColor"

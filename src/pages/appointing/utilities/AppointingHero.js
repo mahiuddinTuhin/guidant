@@ -2,21 +2,21 @@ import React from "react";
 
 const AppointingHero = ({ teacher }) => {
   const {
-    id,
+    // id,
     name,
     institute,
     position,
     experience,
     department,
     courses,
-    features,
-    speciality,
-    image,
-    ratings,
-    email,
-    address,
-    perHourFair,
-    student_deals,
+    // features,
+    // speciality,
+    // image,
+    // ratings,
+    // email,
+    // address,
+    // perHourFair,
+    // student_deals,
   } = teacher;
   return (
     <section className="container m-auto px-6 pt-24 md:px-12  lg:pt-[4.8rem] lg:px-7">

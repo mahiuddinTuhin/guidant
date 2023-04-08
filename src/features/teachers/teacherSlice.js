@@ -1,6 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import teacherData from "./../../assets/teachersData.json";
-import axios from "axios";
 const initialState = {
   isLoading: false,
   isError: false,

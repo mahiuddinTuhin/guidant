@@ -32,7 +32,7 @@ const InfoCard = () => {
                 </p>
               </div>
               <a
-                href="#"
+                href="/"
                 className="flex items-center justify-between group-hover:text-primary"
               >
                 <span className="text-sm">Read more</span>
@@ -70,7 +70,7 @@ const InfoCard = () => {
                 </p>
               </div>
               <a
-                href="#"
+                href="/"
                 className="flex items-center justify-between group-hover:text-primary"
               >
                 <span className="text-sm">Read more</span>
@@ -109,7 +109,7 @@ const InfoCard = () => {
                 </p>
               </div>
               <a
-                href="#"
+                href="/"
                 className="flex items-center justify-between group-hover:text-primary"
               >
                 <span className="text-sm">Read more</span>
@@ -148,7 +148,7 @@ const InfoCard = () => {
                 </p>
               </div>
               <a
-                href="#"
+                href="/"
                 className="flex items-center justify-between group-hover:text-primary"
               >
                 <span className="text-sm">Read more</span>
