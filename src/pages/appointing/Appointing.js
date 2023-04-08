@@ -41,12 +41,11 @@ const Appointing = () => {
     <div>
       <AppointingHero teacher={appointingTeacher} />
       <div className="flex items-center justify-center my-12">
-        {courses.map((c, id) => (
-          <Courses course={c} key={c} id={id} />
-        ))}
+        {courses &&
+          courses?.map((c, id) => <Courses course={c} key={c} id={id} />)}
       </div>
-      <div className="flex items-center justify-center">
-        <div className="">
+      <div className="flex items-center justify-center flex-col lg:flex-row">
+        <div className="shadow-lg lg:mr-12 rounded-md pb-8">
           <AppointingCalander
             selectedDate={selectedDate}
             setSelectedDate={setSelectedDate}

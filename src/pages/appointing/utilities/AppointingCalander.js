@@ -11,6 +11,9 @@ export default function AppointingCalander({ selectedDate, setSelectedDate }) {
   //   }
   return (
     <div className="mx-12">
+      <h1 className="text-red-600 animate-pulse">
+        double click on the same filed create error
+      </h1>
       <DayPicker
         mode="single"
         selected={selectedDate}

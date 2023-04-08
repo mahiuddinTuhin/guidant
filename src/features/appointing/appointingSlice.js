@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import teacherData from "./../../assets/teachersData.json";
+// import teacherData from "./../../assets/teachersData.json";
 import appointingData from "./../../assets/appointingData.json";
+
 const initialState = {
   isLoading: false,
   isError: false,
@@ -12,8 +13,17 @@ export const postAppointingLog = createAsyncThunk(
   "appointing/postAppointingLog",
   async (data) => {
     try {
-      const response = appointingData.push(data);
-      return response;
+      // Add the new appointment to the JSON data
+      appointingData.push(data);
+
+      // // Save the updated JSON data back to the file
+      // const filePath = path.resolve(
+      //   __dirname,
+      //   "./../../assets/appointingData.json"
+      // );
+      // fs.writeFileSync(filePath, JSON.stringify(appointingData));
+
+      return data;
     } catch (error) {
       console.log(error);
     }

@@ -1,10 +1,27 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { format } from "date-fns";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchAppointingLog } from "../../../features/appointing/appointingSlice";
+import {
+  fetchAppointingLog,
+  postAppointingLog,
+} from "../../../features/appointing/appointingSlice";
+import Modal from "./Modal";
 const AvailableSchedule = ({ teacher, selectedDate }) => {
+  // for checking modal open or not
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  // const firstCourse = teacher.courses && teacher.courses[0];
+  const [selectedCourse, setSelectedCourse] = useState(null);
+
+  console.log(selectedCourse);
+
+  // set first course with useeffect as beacuse async data fetching
+  useEffect(() => {
+    setSelectedCourse(teacher.courses && teacher?.courses[0]);
+  }, [teacher]);
+
   const dispatch = useDispatch();
 
+  // format the date that got from user selection
   const formattedDateStr = format(
     new Date(selectedDate.toString()),
     "MMM dd yyyy"
@@ -14,17 +31,18 @@ const AvailableSchedule = ({ teacher, selectedDate }) => {
     useSelector((state) => state.appointingLog) || {};
 
   useEffect(() => {
+    // dispatching to get appointing log
     dispatch(fetchAppointingLog());
   }, []);
 
   const {
     id,
-    // name,
+    name,
     // institute,
     // position,
     // experience,
     // department,
-    // courses,
+    courses,
     // features,
     // speciality,
     // image,
@@ -46,14 +64,43 @@ const AvailableSchedule = ({ teacher, selectedDate }) => {
     : [];
 
   // modal
+  const handleModalToggle = () => {
+    setIsModalOpen(!isModalOpen);
+  };
+
+  // handle course change
+  const handleCourseChange = (e) => {
+    setSelectedCourse(e.target.value);
+  };
+
+  // handleCourseSubmit
+
+  const handleCourseSubmit = (e, time, date) => {
+    // e.preventDefault();
+    const randomId = Math.random().toString(36).substring(2, 8);
+
+    const info = {
+      t_id: teacher.id,
+      s_id: randomId,
+      date,
+      time,
+      course: selectedCourse,
+    };
+
+    dispatch(postAppointingLog(info));
+
+    handleModalToggle();
+  };
 
   return (
     <div>
-      <div className="container max-w-3xl px-4 mx-auto sm:px-8">
-        <div className="py-8">
-          <div className="px-4 py-4 -mx-4 overflow-x-auto sm:-mx-8 sm:px-8">
-            <div className="inline-block min-w-full overflow-hidden rounded-lg shadow">
-              <h1>Selected Date: {format(selectedDate, "PPPP")}</h1>
+      <div className="container max-w-3xl px-4 mx-auto sm:px-8 ">
+        <div className="py-8 rounded-lg">
+          <div className="px-4 py-4 -mx-4 overflow-x-auto sm:-mx-8 sm:px-8 shadow-md">
+            <div className="inline-block min-w-full overflow-hidden rounded-lg text-center">
+              <h1 className="mb-8 font-bold">
+                Selected Date: {format(selectedDate, "PPPP")}
+              </h1>
               <table className="min-w-full leading-normal">
                 <thead>
                   <tr>
@@ -109,7 +156,7 @@ const AvailableSchedule = ({ teacher, selectedDate }) => {
                           </td>
                           <td className="px-2 md:px-5 py-5 text-sm bg-white border-b border-gray-200 flex justify-center">
                             <button
-                              to="/login"
+                              onClick={handleModalToggle}
                               type="button"
                               title="Start buying"
                               disabled={isBooked}
@@ -127,6 +174,59 @@ const AvailableSchedule = ({ teacher, selectedDate }) => {
                                 }`}
                               </span>
                             </button>
+                            {/* modal component to call */}
+                            <Modal
+                              isOpen={isModalOpen}
+                              onClose={handleModalToggle}
+                              info={(name, courses, id)}
+                            >
+                              <h2 className="text-2xl font-bold">
+                                Instructor: {name}
+                              </h2>
+                              <h2 className="text-lg mb-4">
+                                {teacher.position} in {teacher?.institute}
+                              </h2>
+                              <h3 className="text-gray-700 text-base mb-4">
+                                Selected Date: {formattedDateStr}
+                                <br />
+                                Selected Time: {time}
+                              </h3>
+                              {/* select course */}
+                              <div className="w-full space-y-0.5 mb-8">
+                                <h1 className="inline-block text-xl">
+                                  Select Course:
+                                </h1>
+                                <select
+                                  id="course"
+                                  name="course"
+                                  value={selectedCourse}
+                                  className="inline-block ml-8 mb-8 truncate rounded-md border-gray-800 pr-8 text-sm md:text-lg transition 
+                                  ring-blue-600 focus:border-blue-600 focus:ring-blue-600 disabled:cursor-not-allowed disabled:bg-gray-200 disabled:opacity-75"
+                                  onChange={handleCourseChange}
+                                >
+                                  {teacher?.courses?.map((c, id) => {
+                                    return (
+                                      <option
+                                        key={id}
+                                        defaultValue={`${id === 0}`}
+                                        value={c}
+                                      >
+                                        {c}
+                                      </option>
+                                    );
+                                  })}
+                                </select>
+                              </div>
+                              <button
+                                type="submit"
+                                className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+                                onClick={(e) =>
+                                  handleCourseSubmit(e, time, formattedDateStr)
+                                }
+                              >
+                                Submit
+                              </button>
+                            </Modal>
                           </td>
                         </tr>
                       );
