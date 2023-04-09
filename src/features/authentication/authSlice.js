@@ -3,7 +3,7 @@ import teacherData from "./../../assets/teachersData.json";
 import { getLoggedUserData, signupWithEmail } from "./authApi";
 
 const initialState = {
-  isLoading: false,
+  isLoading: true,
   isError: false,
   error: "",
   loggedInUser: {},
@@ -36,11 +36,12 @@ export const loggedInUser = createAsyncThunk(
 );
 
 export const authSlice = createSlice({
-  name: "teachers",
+  name: "authentication",
   initialState,
   reducers: {
     login: (state, action) => {
       state.loggedInUser = action.payload;
+      state.isLoading = false;
     },
     logout: (state) => {
       state.loggedInUser = null;

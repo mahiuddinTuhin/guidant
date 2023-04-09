@@ -2,11 +2,16 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { FcGoogle } from "react-icons/fc";
 import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { createNewUser } from "../../features/authentication/authSlice";
 
 const Signup = () => {
   const dispatch = useDispatch();
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const from = location?.state?.from || "/";
+  console.log(location?.state?.from);
 
   const {
     register,
@@ -23,6 +28,7 @@ const Signup = () => {
         accountType: data.accountType,
       })
     );
+    navigate(from, { replace: true });
   };
 
   return (

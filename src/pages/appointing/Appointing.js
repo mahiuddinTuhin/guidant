@@ -42,6 +42,10 @@ const Appointing = () => {
     dispatch(fetchingTeacher(teacherid));
   }, [dispatch, teacherid]);
 
+  // to show top of the page after refreshing
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div>
       <AppointingHero teacher={appointingTeacher} />

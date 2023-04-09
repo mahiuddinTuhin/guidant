@@ -7,6 +7,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { app } from "../../firebase/firebase.config";
 import { login } from "./authSlice";
 
@@ -55,5 +56,5 @@ export const logoutAccount = () => {
 };
 
 export const loginToApp = (email, password) => {
-  signInWithEmailAndPassword(auth, email, password);
+  return signInWithEmailAndPassword(auth, email, password);
 };

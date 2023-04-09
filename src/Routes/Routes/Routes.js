@@ -5,6 +5,7 @@ import Home from "../../pages/Home/Home";
 import Login from "../../pages/login/Login";
 import Signup from "../../pages/signup/SignUp";
 import Teachers from "../../pages/teachers/Teachers";
+import PrivateRoute from "./privateRoutes/PrivateRoute";
 
 export const router = createBrowserRouter([
   {
@@ -29,7 +30,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/appointing/:teacherid",
-        element: <Appointing />,
+        element: (
+          <PrivateRoute>
+            <Appointing />
+          </PrivateRoute>
+        ),
       },
     ],
   },

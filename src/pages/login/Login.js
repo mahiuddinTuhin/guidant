@@ -1,11 +1,17 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { loginToApp } from "../../features/authentication/authApi";
 import { login } from "../../features/authentication/authSlice";
 import { useDispatch } from "react-redux";
 const Login = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const from = location?.state?.from?.pathname || "/";
+  console.log(from);
+
   const dispatch = useDispatch();
   const {
     register,
@@ -14,8 +20,10 @@ const Login = () => {
   } = useForm();
 
   const submittedForm = (data) => {
-    loginToApp(data.email, data.password)
+    loginToApp(data?.email, data?.password)
       .then((userAuth) => {
+        console.log(from);
+        navigate(from, { replace: true });
         dispatch(
           login({
             email: userAuth.user.email,
@@ -140,7 +148,12 @@ const Login = () => {
                     Login
                   </span>
                 </button>
-                <Link to="/signup" type="reset" className="-ml-3 w-max p-3">
+                <Link
+                  to="/signup"
+                  state={{ from: from }}
+                  replace
+                  className="-ml-3 w-max p-3"
+                >
                   <span className="text-sm tracking-wide text-sky-600 dark:text-sky-400">
                     Create new account
                   </span>
