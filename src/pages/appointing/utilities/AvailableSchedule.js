@@ -33,7 +33,7 @@ const AvailableSchedule = ({ teacher, selectedDate }) => {
   useEffect(() => {
     // dispatching to get appointing log
     dispatch(fetchAppointingLog());
-  }, []);
+  }, [dispatch]);
 
   const {
     id,

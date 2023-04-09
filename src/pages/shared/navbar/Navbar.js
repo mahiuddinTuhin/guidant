@@ -1,9 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FaGrav } from "react-icons/fa";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { logoutAccount } from "../../../features/authentication/authApi";
+
 const Navbar = () => {
+  const { loggedInUser } = useSelector((state) => state.authentication);
+
+  const handleSignout = () => {
+    logoutAccount();
+  };
+
   return (
-    <body className="bg-white dark:bg-gray-900">
+    <div className="bg-white dark:bg-gray-900">
       <header>
         <nav className="fixed z-40 w-full border-b dark:border-gray-700 bg-white dark:bg-gray-800 md:absolute md:bg-transparent">
           <div className="container m-auto px-2 md:px-12 lg:px-7">
@@ -70,27 +79,53 @@ const Navbar = () => {
                       </Link>
                     </li>
                   </ul>
+
+                  {/* login */}
                   <div className="flex sm:hidden pt-4 w-full">
-                    <Link
-                      to="/login"
-                      type="button"
-                      title="Start buying"
-                      className=" flex justify-center items-center w-full py-3 px-6 text-center rounded-full transition bg-gray-900 dark:bg-gray-700 hover:bg-cyan-500 active:bg-cyan-600 focus:bg-cyan-800"
-                    >
-                      <span className="block text-white text-sm">Login</span>
-                    </Link>
+                    {!loggedInUser?.email ? (
+                      <Link
+                        to="/login"
+                        type="button"
+                        title="Start buying"
+                        className=" flex justify-center items-center w-full py-3 px-6 text-center rounded-full transition bg-gray-900 dark:bg-gray-700 hover:bg-cyan-500 active:bg-cyan-600 focus:bg-cyan-800"
+                      >
+                        <span className="block text-white text-sm">Login</span>
+                      </Link>
+                    ) : (
+                      <button
+                        onClick={handleSignout}
+                        type="button"
+                        title="Start buying"
+                        className=" flex justify-center items-center w-full py-3 px-6 text-center rounded-full transition bg-gray-900 dark:bg-gray-700 hover:bg-cyan-500 active:bg-cyan-600 focus:bg-cyan-800"
+                      >
+                        <span className="block text-white text-sm">
+                          Signout
+                        </span>
+                      </button>
+                    )}
                   </div>
                 </div>
               </div>
               <div className="block-endnav w-max flex items-center gap-4">
-                <Link
-                  to="/login"
-                  type="button"
-                  title="Start buying"
-                  className="hidden sm:block w-full py-3 px-6 text-center rounded-full transition bg-gray-900 dark:bg-gray-700 hover:bg-cyan-500 active:bg-cyan-600 focus:bg-cyan-800 sm:w-max"
-                >
-                  <span className="block text-white text-sm">Login</span>
-                </Link>
+                {!loggedInUser?.email ? (
+                  <Link
+                    to="/login"
+                    type="button"
+                    title="Start buying"
+                    className="hidden sm:block w-full py-3 px-6 text-center rounded-full transition bg-gray-900 dark:bg-gray-700 hover:bg-cyan-500 active:bg-cyan-600 focus:bg-cyan-800 sm:w-max"
+                  >
+                    <span className="block text-white text-sm">Login</span>
+                  </Link>
+                ) : (
+                  <button
+                    onClick={handleSignout}
+                    type="button"
+                    title="Start buying"
+                    className="hidden sm:block w-full py-3 px-6 text-center rounded-full transition bg-gray-900 dark:bg-gray-700 hover:bg-cyan-500 active:bg-cyan-600 focus:bg-cyan-800 sm:w-max"
+                  >
+                    <span className="block text-white text-sm">Signout</span>
+                  </button>
+                )}
 
                 <div className="flex items-center md:hidden max-h-10">
                   <label
@@ -115,7 +150,7 @@ const Navbar = () => {
           </div>
         </nav>
       </header>
-    </body>
+    </div>
   );
 };
 

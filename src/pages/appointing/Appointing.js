@@ -13,7 +13,12 @@ const Appointing = () => {
   const { teacherid } = useParams();
 
   const teacher = useSelector((state) => state.teacher);
-  const { isLoading, isError, error, teacher: appointingTeacher } = teacher;
+  const {
+    // isLoading,
+    // isError,
+    // error,
+    teacher: appointingTeacher,
+  } = teacher;
 
   const {
     // id,

@@ -1,6 +1,30 @@
 import React from "react";
+import { useForm } from "react-hook-form";
+import { FcGoogle } from "react-icons/fc";
+import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+import { createNewUser } from "../../features/authentication/authSlice";
 
 const Signup = () => {
+  const dispatch = useDispatch();
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const submittedForm = (data) => {
+    dispatch(
+      createNewUser({
+        name: data.fullName,
+        email: data.email,
+        password: data.password,
+        accountType: data.accountType,
+      })
+    );
+  };
+
   return (
     <div className="m-auto xl:container px-12 sm:px-0 mx-auto">
       <div className="mx-auto h-full sm:w-max">
@@ -26,7 +50,7 @@ const Signup = () => {
             <div className="mt-12 flex flex-wrap sm:grid gap-6 grid-cols-2">
               <button className="w-full h-11 rounded-full border border-gray-300/75 bg-white px-6 transition active:bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:hover:bg-gray-800 dark:hover:border-gray-700">
                 <div className="w-max mx-auto flex items-center justify-center space-x-4">
-                  <img src="images/google.svg" className="w-5" alt="" />
+                  <FcGoogle className="text-2xl" />
                   <span className="block w-max text-sm font-semibold tracking-wide text-cyan-700 dark:text-white">
                     With Google
                   </span>
@@ -49,51 +73,162 @@ const Signup = () => {
               </button>
             </div>
 
-            <form action="" className="mt-10 space-y-8 dark:text-white">
+            <form
+              onSubmit={handleSubmit((data) => submittedForm(data))}
+              className="mt-10 space-y-8 dark:text-white"
+            >
               <div>
                 <div className="relative before:absolute before:bottom-0 before:h-0.5 before:left-0 before:origin-right focus-within:before:origin-left before:right-0 before:scale-x-0 before:m-auto before:bg-sky-400 dark:before:bg-sky-800 focus-within:before:!scale-x-100 focus-within:invalid:before:bg-red-400 before:transition before:duration-300">
+                  {/* full name */}
+
                   <input
+                    {...register("fullName", {
+                      required: true,
+                      pattern: /^[a-z ,.'-]+$/i,
+                    })}
                     id=""
-                    type="email"
-                    placeholder="Your email or user name"
+                    type="text"
+                    placeholder="Full Name"
                     className="w-full bg-transparent pb-3  border-b border-gray-300 dark:placeholder-gray-300 dark:border-gray-600 outline-none  invalid:border-red-400 transition"
                   />
                 </div>
               </div>
+              {errors.fullName && errors.fullName.type === "required" && (
+                <p className="errorMsg text-red-500">Full Name is required.</p>
+              )}
+              {errors.fullName && errors.fullName.type === "pattern" && (
+                <p className="errorMsg text-red-500">Full Name is not valid.</p>
+              )}
+              <div>
+                <div className="relative before:absolute before:bottom-0 before:h-0.5 before:left-0 before:origin-right focus-within:before:origin-left before:right-0 before:scale-x-0 before:m-auto before:bg-sky-400 dark:before:bg-sky-800 focus-within:before:!scale-x-100 focus-within:invalid:before:bg-red-400 before:transition before:duration-300">
+                  {/* email */}
+
+                  <input
+                    {...register("email", {
+                      required: true,
+                      pattern: /^[^@ ]+@[^@ ]+\.[^@ .]{2,}$/,
+                    })}
+                    id=""
+                    type="email"
+                    placeholder="Your email"
+                    className="w-full bg-transparent pb-3  border-b border-gray-300 dark:placeholder-gray-300 dark:border-gray-600 outline-none  invalid:border-red-400 transition"
+                  />
+                </div>
+              </div>
+              {errors.email && errors.email.type === "required" && (
+                <p className="errorMsg text-red-500">Email is required.</p>
+              )}
+              {errors.email && errors.email.type === "pattern" && (
+                <p className="errorMsg text-red-500">Email is not valid.</p>
+              )}
+              <div className="space-y-3">
+                <legend className="text-xs md:text-lg font-medium text-gray-900">
+                  Account Type:
+                </legend>
+                <div className="flex flex-col space-y-2 md:flex-row md:space-y-0 md:space-x-6">
+                  <div className="inline-flex items-center space-x-1.5">
+                    <input
+                      id="teacher"
+                      type="radio"
+                      value="teacher"
+                      name="accountType"
+                      {...register("accountType", {
+                        required: true,
+                      })}
+                      className="cursor-pointer rounded-full border-gray-300 text-blue-600 transition focus:ring-blue-600 disabled:cursor-not-allowed disabled:bg-gray-200 disabled:opacity-75"
+                    />
+                    <label
+                      htmlFor="teacher"
+                      className="cursor-pointer truncate text-xs md:text-lg font-medium text-gray-500"
+                    >
+                      Teacher
+                    </label>
+                  </div>
+                  <div className="inline-flex items-center space-x-1.5">
+                    <input
+                      {...register("accountType", {
+                        required: true,
+                      })}
+                      id="student"
+                      type="radio"
+                      name="accountType"
+                      value="student"
+                      className="cursor-pointer rounded-full border-gray-300 text-blue-600 transition focus:ring-blue-600 disabled:cursor-not-allowed disabled:bg-gray-200 disabled:opacity-75"
+                    />
+                    <label
+                      htmlFor="student"
+                      className="cursor-pointer truncate text-xs md:text-lg font-medium text-gray-500"
+                    >
+                      Student
+                    </label>
+                  </div>
+                  <div className="inline-flex items-center space-x-1.5">
+                    <input
+                      {...register("accountType", {
+                        required: true,
+                      })}
+                      id="both"
+                      type="radio"
+                      name="accountType"
+                      value="both"
+                      className="cursor-pointer rounded-full border-gray-300 text-blue-600 transition focus:ring-blue-600 disabled:cursor-not-allowed disabled:bg-gray-200 disabled:opacity-75"
+                    />
+                    <label
+                      htmlFor="both"
+                      className="cursor-pointer truncate text-xs md:text-lg font-medium text-gray-500"
+                    >
+                      Both
+                    </label>
+                  </div>
+                </div>
+              </div>
+              {errors.accountType && errors.accountType.type === "required" && (
+                <p className="errorMsg text-red-500">
+                  Account Type is required.
+                </p>
+              )}
 
               <div className="flex flex-col items-end">
                 <div className="w-full relative before:absolute before:bottom-0 before:h-0.5 before:left-0 before:origin-right focus-within:before:origin-left before:right-0 before:scale-x-0 before:m-auto before:bg-sky-400 dark:before:bg-sky-800 focus-within:before:!scale-x-100 focus-within:invalid:before:bg-red-400 before:transition before:duration-300">
                   <input
-                    id=""
-                    type="Your password"
-                    placeholder="Your answer"
-                    className="w-full bg-transparent pb-3  border-b border-gray-300 dark:placeholder-gray-300 dark:border-gray-600 outline-none  invalid:border-red-400 transition"
+                    {...register("password", {
+                      required: true,
+                      pattern:
+                        /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/,
+                    })}
+                    id="password"
+                    type="password"
+                    placeholder="password"
+                    className="w-full bg-transparent pb-3  border-b border-gray-300 dark:placeholder-gray-300 dark:border-gray-600 outline-none   transition"
                   />
                 </div>
-                <button type="reset" className="-mr-3 w-max p-3">
-                  <span className="text-sm tracking-wide text-sky-600 dark:text-sky-400">
-                    Forgot password ?
-                  </span>
-                </button>
+                {errors.password && errors.password.type === "required" && (
+                  <p className="errorMsg text-red-500">Password is required.</p>
+                )}
+                {errors.password && errors.password.type === "pattern" && (
+                  <p className="errorMsg text-red-500">
+                    Minimum eight characters, at least one letter uppercase
+                    <br /> and one letter lowercase and one number.
+                  </p>
+                )}
               </div>
-
               <div>
                 <button className="w-full rounded-full bg-sky-500 dark:bg-sky-400 h-11 flex items-center justify-center px-6 py-3 transition hover:bg-sky-600 focus:bg-sky-600 active:bg-sky-800">
                   <span className="text-base font-semibold text-white dark:text-gray-900">
-                    Login
+                    Signup
                   </span>
                 </button>
-                <button href="/" type="reset" className="-ml-3 w-max p-3">
+                <Link to="/login" type="reset" className="-ml-3 w-max p-3">
                   <span className="text-sm tracking-wide text-sky-600 dark:text-sky-400">
-                    Create new account
+                    Already have an account
                   </span>
-                </button>
+                </Link>
               </div>
             </form>
           </div>
           <div className="border-t pt-12 text-gray-500 dark:border-gray-800">
             <div className="space-x-4 text-center">
-              <span>&copy; Tailus</span>
+              <span>&copy; Guidant</span>
               <a
                 href="/"
                 className="text-sm hover:text-sky-900 dark:hover:text-gray-300"
@@ -104,7 +239,7 @@ const Signup = () => {
                 href="/"
                 className="text-sm hover:text-sky-900 dark:hover:text-gray-300"
               >
-                Privacy & Terms
+                accountType & Terms
               </a>
             </div>
           </div>

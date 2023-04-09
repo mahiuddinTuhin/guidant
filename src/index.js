@@ -16,15 +16,14 @@ import "swiper/css/pagination";
 // import styles bundle
 import "swiper/css/bundle";
 import "react-day-picker/dist/style.css";
+
 const container = document.getElementById("root");
 const root = createRoot(container);
 
 root.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </React.StrictMode>
+  <Provider store={store}>
+    <App />
+  </Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function
