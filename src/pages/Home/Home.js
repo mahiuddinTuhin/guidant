@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { fetchingTeachers } from "../../features/teachers/teacherSlice";
+import { fetchingTeachersData } from "../../features/teachers/teachersApi";
 
 import Hero from "./hero/Hero";
 import InfoCard from "./infoCard/InfoCard";
@@ -11,7 +11,7 @@ function Home() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchingTeachers());
+    dispatch(fetchingTeachersData());
   }, [dispatch]);
 
   return (

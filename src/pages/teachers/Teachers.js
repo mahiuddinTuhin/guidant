@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchingTeachers } from "../../features/teachers/teacherSlice";
+import { fetchingTeachersData } from "../../features/teachers/teachersApi";
+
 import Error from "../shared/Error/Error";
 import Loader from "../shared/loader/Loader";
 import NewTeacherCard from "./NewTeacherCard";
@@ -16,7 +17,7 @@ const Teachers = () => {
   } = useSelector((state) => state.teachers);
 
   useEffect(() => {
-    dispatch(fetchingTeachers());
+    dispatch(fetchingTeachersData());
   }, [dispatch]);
 
   let content = null;

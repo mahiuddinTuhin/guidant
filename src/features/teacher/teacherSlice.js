@@ -1,5 +1,5 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import teacherData from "./../../assets/teachersData.json";
+import { createSlice } from "@reduxjs/toolkit";
+import { fetchingTeacher } from "./teacherApi";
 
 const initialState = {
   isLoading: false,
@@ -7,18 +7,6 @@ const initialState = {
   error: "",
   teacher: {},
 };
-
-export const fetchingTeacher = createAsyncThunk(
-  "teacher/fetchingTeacher",
-  async (teacherid) => {
-    try {
-      const response = teacherData.find((t) => t.id === teacherid);
-      return response;
-    } catch (error) {
-      console.log(error);
-    }
-  }
-);
 
 export const teacherSlice = createSlice({
   name: "teachers",

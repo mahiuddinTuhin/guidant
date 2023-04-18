@@ -1,10 +1,13 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { FaGrav } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { logoutAccount } from "../../../features/authentication/authApi";
 
 const Navbar = () => {
+  const [isProfileOpen, setIsProfileOpen] = useState(false);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
   const { loggedInUser } = useSelector((state) => state.authentication);
 
   const handleSignout = () => {
@@ -12,145 +15,91 @@ const Navbar = () => {
   };
 
   return (
-    <div className="bg-white dark:bg-gray-900">
-      <header>
-        <nav className="fixed z-40 w-full border-b dark:border-gray-700 bg-white dark:bg-gray-800 md:absolute md:bg-transparent">
-          <div className="container m-auto px-2 md:px-12 lg:px-7">
-            <div className="flex px-6 md:px-0 z-20 flex-wrap items-center justify-between py-3 gap-6 md:py-4 md:gap-0">
-              <input
-                type="checkbox"
-                name=""
-                id="toggleNav"
-                className="peer hidden"
+    /* <!-- ====== Navbar Section Start --> */
+    <header
+      x-data="
+        {
+          navbarOpen: false
+        }
+      "
+      class="flex w-full items-center bg-white"
+    >
+      <div class="container mx-auto">
+        <div class="relative -mx-4 flex items-center justify-between">
+          <div class="w-60 max-w-full px-4">
+            <a href="/" class="block w-full py-5">
+              <img
+                src="https://cdn.tailgrids.com/2.0/image/assets/images/logo/logo.svg"
+                alt="logo"
+                class="w-full"
               />
-              <label
-                htmlFor="toggleNav"
-                className="fixed left-0 top-0 transition-all 
-                    md:peer-checked:hidden md:hidden opacity-0 hidden peer-checked:z-0 
-                    peer-checked:opacity-75 peer-checked:block w-full h-screen
-                    bg-gray-200 bg-opacity-75 dark:bg-darker dark:opacity-80"
-              ></label>
-              <div className="relative z-40">
-                <Link to="/" aria-label="logo">
-                  <FaGrav className="text-[#221E1F] text-4xl" />
-                </Link>
-              </div>
-
-              <div
-                id="navlinks"
-                className="fixed h-full w-4/5 max-w-sm top-0 -left-full peer-checked:-left-0 md:relative md:top-0 md:left-0 transition-all z-30 md:flex items-center p-8 bg-white dark:bg-gray-800 md:space-y-0 md:p-0 md:flex-nowrap md:bg-transparent md:w-max"
+            </a>
+          </div>
+          <div class="flex w-full items-center justify-between px-4">
+            <div>
+              <button
+                onClick={() => setIsDrawerOpen(!isDrawerOpen)}
+                className={`${isDrawerOpen && "navbarTogglerActive"}`}
+                id="navbarToggler"
+                class="ring-primary absolute right-4 top-1/2 block -translate-y-1/2 rounded-lg px-3 py-[6px] focus:ring-2 lg:hidden"
               >
-                <div className="z-20 flex gap-8 md:gap-0 flex-col md:flex-row md:items-center w-full">
-                  <ul className="pt-28 lg:pt-0 gap-8 tracking-wide font-medium flex-col flex md:flex-row md:gap-0">
-                    <li className="max-w-max">
-                      <Link to="/" className="block md:px-3 group">
-                        <div
-                          className="relative text-gray-600 dark:text-gray-300
-                                                    before:absolute before:-bottom-2 md:before:-bottom-7 before:origin-left before:w-full before:h-0.5 before:mx-auto before:mt-auto before:rounded-full before:bg-cyan-800 dark:before:bg-cyan-400 before:transition before:scale-x-0 group-hover:before:scale-x-100"
-                        >
-                          <span className="transition group-hover:text-cyan-700 dark:group-hover:text-cyan-400">
-                            Home
-                          </span>
-                        </div>
-                      </Link>
-                    </li>
-                    <li className="max-w-max">
-                      <Link to="/teachers" className="block md:px-3 group">
-                        <div
-                          className="relative text-gray-600 dark:text-gray-300
-                                                    before:absolute before:-bottom-2 md:before:-bottom-7 before:origin-left before:w-full before:h-0.5 before:mx-auto before:mt-auto before:rounded-full before:bg-cyan-800 dark:before:bg-cyan-400 before:transition before:scale-x-0 group-hover:before:scale-x-100"
-                        >
-                          <span className="transition group-hover:text-cyan-700 dark:group-hover:text-cyan-400">
-                            Teachers
-                          </span>
-                        </div>
-                      </Link>
-                    </li>
-                    <li className="max-w-max">
-                      <Link to="/" className="block md:px-3 group">
-                        <div
-                          className="relative text-gray-600 dark:text-gray-300
-                                                    before:absolute before:-bottom-2 md:before:-bottom-7 before:origin-left before:w-full before:h-0.5 before:mx-auto before:mt-auto before:rounded-full before:bg-cyan-800 dark:before:bg-cyan-400 before:transition before:scale-x-0 group-hover:before:scale-x-100"
-                        >
-                          <span className="transition group-hover:text-cyan-700 dark:group-hover:text-cyan-400">
-                            Event
-                          </span>
-                        </div>
-                      </Link>
-                    </li>
-                  </ul>
-
-                  {/* login */}
-                  <div className="flex sm:hidden pt-4 w-full">
-                    {!loggedInUser?.email ? (
-                      <Link
-                        to="/login"
-                        type="button"
-                        title="Start buying"
-                        className=" flex justify-center items-center w-full py-3 px-6 text-center rounded-full transition bg-gray-900 dark:bg-gray-700 hover:bg-cyan-500 active:bg-cyan-600 focus:bg-cyan-800"
-                      >
-                        <span className="block text-white text-sm">Login</span>
-                      </Link>
-                    ) : (
-                      <button
-                        onClick={handleSignout}
-                        type="button"
-                        title="Start buying"
-                        className=" flex justify-center items-center w-full py-3 px-6 text-center rounded-full transition bg-gray-900 dark:bg-gray-700 hover:bg-cyan-500 active:bg-cyan-600 focus:bg-cyan-800"
-                      >
-                        <span className="block text-white text-sm">
-                          Signout
-                        </span>
-                      </button>
-                    )}
-                  </div>
-                </div>
-              </div>
-              <div className="block-endnav w-max flex items-center gap-4">
-                {!loggedInUser?.email ? (
-                  <Link
-                    to="/login"
-                    type="button"
-                    title="Start buying"
-                    className="hidden sm:block w-full py-3 px-6 text-center rounded-full transition bg-gray-900 dark:bg-gray-700 hover:bg-cyan-500 active:bg-cyan-600 focus:bg-cyan-800 sm:w-max"
-                  >
-                    <span className="block text-white text-sm">Login</span>
-                  </Link>
-                ) : (
-                  <button
-                    onClick={handleSignout}
-                    type="button"
-                    title="Start buying"
-                    className="hidden sm:block w-full py-3 px-6 text-center rounded-full transition bg-gray-900 dark:bg-gray-700 hover:bg-cyan-500 active:bg-cyan-600 focus:bg-cyan-800 sm:w-max"
-                  >
-                    <span className="block text-white text-sm">Signout</span>
-                  </button>
-                )}
-
-                <div className="flex items-center md:hidden max-h-10">
-                  <label
-                    role="button"
-                    htmlFor="toggleNav"
-                    aria-label="humburger"
-                    id="hamburger"
-                    className="relative  p-6 -mr-6"
-                  >
-                    <div
-                      id="line"
-                      className="m-auto h-0.5 w-6 rounded bg-sky-900 dark:bg-gray-200 transition duration-300"
-                    ></div>
-                    <div
-                      id="line2"
-                      className="m-auto mt-2 h-0.5 w-6 rounded bg-sky-900 dark:bg-gray-200 transition duration-300"
-                    ></div>
-                  </label>
-                </div>
-              </div>
+                <span class="bg-body-color relative my-[6px] block h-[2px] w-[30px]"></span>
+                <span class="bg-body-color relative my-[6px] block h-[2px] w-[30px]"></span>
+                <span class="bg-body-color relative my-[6px] block h-[2px] w-[30px]"></span>
+              </button>
+              <nav
+                onClick={() => setIsDrawerOpen(!isDrawerOpen)}
+                className={`${isDrawerOpen && "hidden"}`}
+                id="navbarCollapse"
+                class="absolute right-4 top-full w-full max-w-[250px] rounded-lg bg-white py-5 px-6 shadow lg:static lg:block lg:w-full lg:max-w-full lg:shadow-none"
+              >
+                <ul class="block lg:flex">
+                  <li>
+                    <a
+                      href="javascript:void(0)"
+                      class="text-dark hover:text-primary flex py-2 text-base font-medium lg:ml-12 lg:inline-flex"
+                    >
+                      Home
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="javascript:void(0)"
+                      class="text-dark hover:text-primary flex py-2 text-base font-medium lg:ml-12 lg:inline-flex"
+                    >
+                      Payment
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="javascript:void(0)"
+                      class="text-dark hover:text-primary flex py-2 text-base font-medium lg:ml-12 lg:inline-flex"
+                    >
+                      Features
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+            <div class="hidden justify-end pr-16 sm:flex lg:pr-0">
+              <a
+                href="javascript:void(0)"
+                class="text-dark hover:text-primary py-3 px-7 text-base font-medium"
+              >
+                Login
+              </a>
+              <a
+                href="javascript:void(0)"
+                class="bg-primary rounded-lg py-3 px-7 text-base font-medium text-white hover:bg-opacity-90"
+              >
+                Sign Up
+              </a>
             </div>
           </div>
-        </nav>
-      </header>
-    </div>
+        </div>
+      </div>
+    </header>
+    /* <!-- ====== Navbar Section End --> */
   );
 };
 

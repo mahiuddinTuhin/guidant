@@ -1,6 +1,6 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-// import teacherData from "./../../assets/teachersData.json";
-import appointingData from "./../../assets/appointingData.json";
+import { createSlice } from "@reduxjs/toolkit";
+
+import { fetchAppointingLog, postAppointingLog } from "./appointingApi";
 
 const initialState = {
   isLoading: false,
@@ -8,38 +8,6 @@ const initialState = {
   error: "",
   appointing: [],
 };
-
-export const postAppointingLog = createAsyncThunk(
-  "appointing/postAppointingLog",
-  async (data) => {
-    try {
-      // Add the new appointment to the JSON data
-      appointingData.push(data);
-
-      // // Save the updated JSON data back to the file
-      // const filePath = path.resolve(
-      //   __dirname,
-      //   "./../../assets/appointingData.json"
-      // );
-      // fs.writeFileSync(filePath, JSON.stringify(appointingData));
-
-      return data;
-    } catch (error) {
-      console.log(error);
-    }
-  }
-);
-
-export const fetchAppointingLog = createAsyncThunk(
-  "appointing/getAppointingLog",
-  async () => {
-    try {
-      return appointingData;
-    } catch (error) {
-      console.log(error);
-    }
-  }
-);
 
 export const appointingSlice = createSlice({
   name: "appointingLog",
@@ -54,7 +22,7 @@ export const appointingSlice = createSlice({
       })
       .addCase(postAppointingLog.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.appointing = action.payload;
+        state.appointing = action.meta.arg;
       })
       .addCase(postAppointingLog.rejected, (state, action) => {
         state.isLoading = false;

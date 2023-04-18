@@ -1,5 +1,6 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import teacherData from "./../../assets/teachersData.json";
+import { createSlice } from "@reduxjs/toolkit";
+
+import { fetchingTeachersData } from "./teachersApi";
 const initialState = {
   isLoading: false,
   isError: false,
@@ -7,17 +8,17 @@ const initialState = {
   teachers: [],
 };
 
-export const fetchingTeachers = createAsyncThunk(
-  "teachers/fetchingTeachers",
-  async () => {
-    try {
-      //   const response = await axios.get(teacherData);
-      return teacherData;
-    } catch (error) {
-      console.log(error);
-    }
-  }
-);
+// export const getTeachersData = createAsyncThunk(
+//   "teachers/getTeachersData",
+//   async () => {
+//     try {
+//       const response = await fetchingTeachersData();
+//       return response;
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   }
+// );
 
 export const teacherSlice = createSlice({
   name: "teachers",
@@ -25,16 +26,16 @@ export const teacherSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(fetchingTeachers.pending, (state) => {
+      .addCase(fetchingTeachersData.pending, (state) => {
         state.isLoading = true;
         state.isError = false;
         state.error = "";
       })
-      .addCase(fetchingTeachers.fulfilled, (state, action) => {
+      .addCase(fetchingTeachersData.fulfilled, (state, action) => {
         state.isLoading = false;
         state.teachers = action.payload;
       })
-      .addCase(fetchingTeachers.rejected, (state, action) => {
+      .addCase(fetchingTeachersData.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.error = action.error.message;

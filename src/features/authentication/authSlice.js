@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import teacherData from "./../../assets/teachersData.json";
+
 import { getLoggedUserData, signupWithEmail } from "./authApi";
 
 const initialState = {

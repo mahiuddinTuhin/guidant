@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { fetchingTeacher } from "../../features/teacher/teacherSlice";
+import { fetchingTeacher } from "../../features/teacher/teacherApi";
+
 import AppointingCalander from "./utilities/AppointingCalander";
 import AppointingHero from "./utilities/AppointingHero";
 import AvailableSchedule from "./utilities/AvailableSchedule";
