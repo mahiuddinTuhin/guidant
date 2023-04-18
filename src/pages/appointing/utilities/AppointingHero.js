@@ -58,7 +58,7 @@ const AppointingHero = ({ teacher }) => {
                   (prev, curr, index) => (
                     <span>
                       {prev}
-                      {index === courses.length - 1 ? curr : curr + ", "}{" "}
+                      {index === courses?.length - 1 ? curr : curr + ", "}{" "}
                     </span>
                   ),
                   ""

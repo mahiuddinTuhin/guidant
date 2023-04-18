@@ -108,7 +108,7 @@ const AvailableSchedule = ({ teacher, selectedDate }) => {
   if (!isLoading && appointing.length === 0) {
     content = <Error />;
   }
-  if (!isLoading && appointing.length > 0) {
+  if (!isLoading && appointing?.length > 0) {
     content = (
       <div className="py-8 rounded-lg">
         <div className="px-4 py-4 -mx-4 overflow-x-auto sm:-mx-8 sm:px-8 shadow-md">

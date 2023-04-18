@@ -30,10 +30,10 @@ const Teachers = () => {
     content = <Error message={error} />;
   }
 
-  if (!isLoading && !isError && teachersData.length === 0) {
+  if (!isLoading && !isError && teachersData?.length === 0) {
     content = <h1>No Data found</h1>;
   }
-  if (!isLoading && !isError && teachersData.length > 0) {
+  if (!isLoading && !isError && teachersData?.length > 0) {
     content = (
       <div className="py-20">
         <div className="mb-16 md:w-2/3 lg:w-1/2">
